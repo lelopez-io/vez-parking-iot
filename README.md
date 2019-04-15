@@ -70,10 +70,18 @@ Now that we have node and npm installed we are able to install other JavaScript 
 2. raspi-io (helps johnny-five work with raspberry pi)
 3. pi-io  (helps johnny-five use proximity sensors on the pi)
 
+
+> Note: use these commands if starting from scratch ()
 ```bash
 mkdir project-folder # make a folder to work in
 cd project-folder
 npm install johnny-five raspi-io pi-io
+```
+> Note: use this if downloading code from vez repo (currently no code exist so use above method to start)
+```bash
+git clone https://github.com/lelopez-io/vez-parking-iot.git
+cd vez-parking-iot.git
+npm install 		# this installes the packages in 
 ```
 
 > Note: we must restart the PI after installing raspi-io 
