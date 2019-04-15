@@ -115,7 +115,7 @@ board.on('ready', () => {
 ```
 
 ## Finally run the code
-**all files that access GPIOs must be ran using sudo**
+> all files that access GPIOs must be ran using sudo
 
 `sudo node proximity.js`
 
