@@ -14,7 +14,7 @@ This assumes you have a Raspberry PI W and and SD card ready and will be connect
 3. Open up balenaEtcher then select the Raspbian ISO and SD to flash to
 
 **Setting up SSH**
-1. With the SD card still plugged in to your computer, navigate its `boot` directory
+1. With the SD card still plugged in to your computer, navigate to its `boot` directory
 2. Create and empty file with no extenstion, name it `ssh`
 
 **Setting up WIFI**
@@ -54,8 +54,8 @@ At this point you should be able to SSH into the Raspberry PI W and execute coma
 1. Copy the download link for the latest LTS ARMv6 Node.js binary from [here](https://nodejs.org/en/download/)
 2. Execute the following commands to download, extract, and install 
 ```bash
-wget https://nodejs.org/dist/vX.X.X/node-vX.X.X-linux-armv6l.tar.xz
-tar -xf node-vX.X.X-linux-armv6l.tar.xz
+wget https://nodejs.org/dist/vX.X.X/node-vX.X.X-linux-armv6l.tar.xz	# use the download link copied earlier
+tar -xf node-vX.X.X-linux-armv6l.tar.xz					# vX.X.X should be the version you dowload above
 sudo mv node-vX.X.X-linux-armv6l /usr/local/node
 cd /usr/bin
 sudo ln -s /usr/local/node/bin/node node
@@ -86,8 +86,8 @@ npm install 		# this installes the packages in package.json
 
 > Note: we must restart the PI after installing raspi-io 
 
-## Now we can start writing JavaScript to control GPIOs on the PI
-While in the project folder create a new file `touch proximity.js` then save the following code to that file.
+## Start writing JavaScript to control GPIOs on the PI
+While in the project folder create a new file using the command `touch proximity.js` then save the following code to that file.
 
 > Note: we are only using pi-io in this case since raspi-io thows an error when trying to use the .Proximity function.
 
@@ -115,6 +115,7 @@ board.on('ready', () => {
 ```
 
 ## Finally run the code
+**all files that access GPIOs must be ran using sudo**
 
 `sudo node proximity.js`
 
