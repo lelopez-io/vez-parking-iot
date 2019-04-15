@@ -35,7 +35,7 @@ network={
 ## Connecting to the Hardware
 
 At this point you should be ready to connect to the hardware so long as you computer is on the same WIFI network you set on the .conf file. Plug in the SD card to the PI and then connect to it.
-> Note: I use a Mac so I know it will resolve the DNS correctly by using raspberrypi.local on a small network. If working with multiple the IP address goes after the @. Also I'm not what additional steps are required for PC to connect at the moment.
+> Note: I use a Mac so I know it will resolve the DNS correctly by using raspberrypi.local on a small network. If working with multiple devices insert the IP address after the @. Also I'm not sure what additional steps are required for PC to connect at the moment.
 
 **On a Mac**
 1. Open up a terminal
