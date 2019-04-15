@@ -81,7 +81,7 @@ npm install johnny-five raspi-io pi-io
 ```bash
 git clone https://github.com/lelopez-io/vez-parking-iot.git
 cd vez-parking-iot.git
-npm install 		# this installes the packages in 
+npm install 		# this installes the packages in package.json
 ```
 
 > Note: we must restart the PI after installing raspi-io 
