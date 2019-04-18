@@ -17,7 +17,10 @@ This assumes you have a Raspberry PI W and and SD card ready and will be connect
 1. With the SD card still plugged in to your computer, navigate to its `boot` directory
 2. Create and empty file with no extenstion, name it `ssh`
 
-**Setting up WIFI**
+**Setting up USB ethernet**
+[link](https://desertbot.io/blog/headless-pi-zero-ssh-access-over-usb-windows)
+
+**Setting up WIFI (optional)**
 1. In the same `boot` directory create a file called `wpa_supplicant.conf`
 2. Add these config settings, just change the `ssid` & `psk`
 ```
@@ -47,6 +50,10 @@ At this point you should be ready to connect to the hardware so long as you comp
 2. enter `ssh pi@IP`
 
 > Note: Serial Connection may also be an option
+
+## Installing Git
+At this point you should be able to connect to the Raspberry pi using SSH
+`sudo apt install git`
 
 ## Installing Node.js
 
