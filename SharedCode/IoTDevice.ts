@@ -9,7 +9,7 @@ export class IoTDevice {
   private static connectionString: string;
   private static message: Message;
 
-  private static deviceMetaData = {
+  private static metaData = {
     'ObjectType': 'DeviceInfo',
     'IsSimulatedDevice': 0,
     'Version': '1.0',
@@ -45,6 +45,12 @@ export class IoTDevice {
       }]
   };
 
+  private static eventData = {
+    'temperature': 50,
+    'humidity': 50,
+    'externalTemperature': 55
+  }
+
   constructor() {
     console.log("Creating a new IoT Device");
     IoTDevice.connectionString = process.env.CONNECTION_STRING;
@@ -53,29 +59,24 @@ export class IoTDevice {
     IoTDevice.client = Client.fromConnectionString(IoTDevice.connectionString, Mqtt);
   }
 
-  async Run() {
-    let temperature = 50;
-    let humidity = 50;
-    let externalTemperature = 55;
+  Run() {
+
 
     try {
       IoTDevice.client.open();
-      console.log('Sending device metadata:\n' + JSON.stringify(IoTDevice.deviceMetaData));
+      console.log('Sending device metadata:\n' + JSON.stringify(IoTDevice.metaData));
 
       IoTDevice.client.on('message', (msg) => {
         console.log(`recieve data: ${msg.getData()}`);
       })
 
       let sendInterval = setInterval(() => {
-        temperature += IoTDevice.generateRandomIncrement();
-        externalTemperature += IoTDevice.generateRandomIncrement();
-        humidity += IoTDevice.generateRandomIncrement();
 
         let data = JSON.stringify({
           'DeviceID': IoTDevice.deviceId,
-          'Temperature': temperature,
-          'Humidity': humidity,
-          'ExternalTemperature': externalTemperature
+          'Temperature': IoTDevice.eventData.temperature,
+          'Humidity': IoTDevice.eventData.humidity,
+          'ExternalTemperature': IoTDevice.eventData.externalTemperature
         });
 
         console.log('Sending device event data:\n' + data);
@@ -103,6 +104,16 @@ export class IoTDevice {
   // Helper function to generate random number between min and max
   private static generateRandomIncrement() {
     return ((Math.random() * 2) - 1);
+  }
+
+  SetEventData() {
+    IoTDevice.eventData.temperature += IoTDevice.generateRandomIncrement();
+    IoTDevice.eventData.externalTemperature += IoTDevice.generateRandomIncrement();
+    IoTDevice.eventData.humidity += IoTDevice.generateRandomIncrement();
+
+    console.log(IoTDevice.eventData.temperature);
+    console.log(IoTDevice.eventData.externalTemperature);
+    console.log(IoTDevice.eventData.humidity);
   }
 
 }
