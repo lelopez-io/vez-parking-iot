@@ -45,6 +45,7 @@ export class IoTDevice {
       }]
   };
 
+  // TODO: better format these fields for how we'll be reporting zones
   private static eventData = {
     'temperature': 50,
     'humidity': 50,
@@ -64,25 +65,30 @@ export class IoTDevice {
 
     try {
       IoTDevice.client.open();
+      // First message will send Device Metadata
       console.log('Sending device metadata:\n' + JSON.stringify(IoTDevice.metaData));
+      IoTDevice.client.sendEvent(new Message(JSON.stringify(IoTDevice.metaData)), IoTDevice.printErrorFor('send metadata'));
 
+      // This is for device methods if we choose to use them
       IoTDevice.client.on('message', (msg) => {
         console.log(`recieve data: ${msg.getData()}`);
       })
 
+      // This executes at a set interval - 10s seems good for cloud uploads
       let sendInterval = setInterval(() => {
 
+        // TODO: this should look more like the call above where we strigify the entire metaData object
         let data = JSON.stringify({
           'DeviceID': IoTDevice.deviceId,
           'Temperature': IoTDevice.eventData.temperature,
           'Humidity': IoTDevice.eventData.humidity,
           'ExternalTemperature': IoTDevice.eventData.externalTemperature
         });
-
         console.log('Sending device event data:\n' + data);
         IoTDevice.client.sendEvent(new Message(data), IoTDevice.printErrorFor('send event'));
       }, 10000);
 
+      // Incase there is a client error this will report at what interval it happened.
       IoTDevice.client.on('error', (err) => {
         IoTDevice.printErrorFor('client')(err);
         if (sendInterval) clearInterval(sendInterval);
@@ -106,6 +112,8 @@ export class IoTDevice {
     return ((Math.random() * 2) - 1);
   }
 
+  // I want eventData object to be generic, perhaps the structur can be passed when constructed
+  // so this way the SetEventData will only accept that type of object
   SetEventData() {
     IoTDevice.eventData.temperature += IoTDevice.generateRandomIncrement();
     IoTDevice.eventData.externalTemperature += IoTDevice.generateRandomIncrement();
