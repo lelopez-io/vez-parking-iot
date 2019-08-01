@@ -6,17 +6,20 @@
   "author": "Microsoft Corp.",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^12.6.8",
     "azure-iot-device": "1.9.9",
     "azure-iot-device-amqp": "1.9.9",
     "azure-iot-device-http": "1.9.9",
     "azure-iot-device-mqtt": "1.9.9",
     "es5-shim": "^4.5.12",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
     "jshint": "^2.9.6"
   },
   "scripts": {
-    "lint": "jshint --show-non-errors ."
+    "lint": "jshint --show-non-errors .",
+    "tsc": "tsc"
   }
 }
