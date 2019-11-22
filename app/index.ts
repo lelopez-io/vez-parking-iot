@@ -37,6 +37,11 @@ setInterval(() => {
 
   iotDevice.SetEventData();
 
+  if(process.env.HOST_ENV == 'EDGE') {
+    iotDevice.SetSensorData(sensor1, -1, -1, -1, -1)
+  }
+
+
   
 }, 2000);
 

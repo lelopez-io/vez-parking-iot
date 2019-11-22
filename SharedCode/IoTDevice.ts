@@ -2545,4 +2545,12 @@ export class IoTDevice {
 
   }
 
+  SetSensorData(s1, s2, s3, s4, s5) {
+    IoTDevice.eventData.Group_H.spot_62.status = s1
+    IoTDevice.eventData.Group_H.spot_61.status = s2
+    IoTDevice.eventData.Group_H.spot_60.status = s3
+    IoTDevice.eventData.Group_H.spot_59.status = s4
+    IoTDevice.eventData.Group_H.spot_58.status = s5
+  }
+
 }
