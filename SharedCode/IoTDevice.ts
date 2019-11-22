@@ -3,6 +3,9 @@ import { ConnectionString } from "azure-iot-device";
 import { Mqtt } from "azure-iot-device-mqtt";
 import { Message } from "azure-iot-device";
 
+const five = require('johnny-five');
+const piIO = require('pi-io');
+
 export class IoTDevice {
   private static deviceId: string;
   private static client: Client;
@@ -2541,11 +2544,29 @@ export class IoTDevice {
     IoTDevice.eventData.Group_H.spot_58.status = -1
 
     if(process.env.HOST_ENV == 'EDGE') {
-      IoTDevice.eventData.Group_H.spot_62.status = 0
-      IoTDevice.eventData.Group_H.spot_61.status = 0
-      IoTDevice.eventData.Group_H.spot_60.status = 0
-      IoTDevice.eventData.Group_H.spot_59.status = 0
-      IoTDevice.eventData.Group_H.spot_58.status = 0
+      const board = new five.Board({
+        io: new piIO()
+      });
+
+      board.on('ready', () => {
+        const proximity = new five.Proximity({
+          controller: piIO.HCSR04,
+          triggerPin: 'GPIO18',
+          echoPin: 'GPIO24'
+        });
+      
+      
+        proximity.on("change", function() {
+          IoTDevice.eventData.Group_H.spot_62.status = this.cm;
+        });
+      
+      });
+
+      // IoTDevice.eventData.Group_H.spot_62.status = 0
+      // IoTDevice.eventData.Group_H.spot_61.status = 0
+      // IoTDevice.eventData.Group_H.spot_60.status = 0
+      // IoTDevice.eventData.Group_H.spot_59.status = 0
+      // IoTDevice.eventData.Group_H.spot_58.status = 0
     }
 
   }
