@@ -20,6 +20,7 @@
   },
   "scripts": {
     "lint": "jshint --show-non-errors .",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "serve": "tsc && node dist/app/index.js"
   }
 }

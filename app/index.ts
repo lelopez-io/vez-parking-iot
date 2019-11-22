@@ -7,6 +7,9 @@ iotDevice.Run();
 
 // Have the app sample from the sensors every 2 seconds
 setInterval(() => {
+
   iotDevice.SetEventData();
+
+  
 }, 2000);
 
