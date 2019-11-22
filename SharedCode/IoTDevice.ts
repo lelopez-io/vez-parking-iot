@@ -2534,6 +2534,12 @@ export class IoTDevice {
       )
     );
 
+    IoTDevice.eventData.Group_H.spot_62.status = -1
+    IoTDevice.eventData.Group_H.spot_61.status = -1
+    IoTDevice.eventData.Group_H.spot_60.status = -1
+    IoTDevice.eventData.Group_H.spot_59.status = -1
+    IoTDevice.eventData.Group_H.spot_58.status = -1
+
   }
 
 }
