@@ -18,9 +18,12 @@ if(process.env.HOST_ENV == 'EDGE') {
     });
   
   
-    proximity.on("change", function() {
-      sensor1 = this.cm
-      console.log("cm: ", sensor1);
+    proximity.on("data", function() {
+      if (this.cm < 70){
+        sensor1 = 1
+      } else {
+        sensor1 = 0
+      }
     });
   
   });
