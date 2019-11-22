@@ -2487,9 +2487,8 @@ export class IoTDevice {
 
       // This executes at a set interval - 10s seems good for cloud uploads
       let sendInterval = setInterval(() => {
-
-
-        console.log('Sending device event data:\n' + JSON.stringify(IoTDevice.eventData));
+        console.log('Sending device event data:\n');
+        //+ JSON.stringify(IoTDevice.eventData)
         IoTDevice.client.sendEvent(new Message(JSON.stringify(IoTDevice.eventData)), IoTDevice.printErrorFor('send event'));
       }, 10000);
 
@@ -2545,12 +2544,13 @@ export class IoTDevice {
 
   }
 
-  SetSensorData(s1, s2, s3, s4, s5) {
-    IoTDevice.eventData.Group_H.spot_62.status = s1
-    IoTDevice.eventData.Group_H.spot_61.status = s2
-    IoTDevice.eventData.Group_H.spot_60.status = s3
-    IoTDevice.eventData.Group_H.spot_59.status = s4
-    IoTDevice.eventData.Group_H.spot_58.status = s5
+  SetSensorData(sensorData) {
+    console.log(sensorData)
+    IoTDevice.eventData.Group_H.spot_62.status = sensorData.Group_H.spot_62.status
+    IoTDevice.eventData.Group_H.spot_61.status = sensorData.Group_H.spot_61.status
+    IoTDevice.eventData.Group_H.spot_60.status = sensorData.Group_H.spot_50.status
+    IoTDevice.eventData.Group_H.spot_59.status = sensorData.Group_H.spot_59.status
+    IoTDevice.eventData.Group_H.spot_58.status = sensorData.Group_H.spot_58.status
   }
 
 }
