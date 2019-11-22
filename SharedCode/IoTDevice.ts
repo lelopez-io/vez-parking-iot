@@ -3,9 +3,6 @@ import { ConnectionString } from "azure-iot-device";
 import { Mqtt } from "azure-iot-device-mqtt";
 import { Message } from "azure-iot-device";
 
-const five = require('johnny-five');
-const piIO = require('pi-io');
-
 export class IoTDevice {
   private static deviceId: string;
   private static client: Client;
@@ -2533,40 +2530,17 @@ export class IoTDevice {
 
     Object.keys(IoTDevice.eventData).forEach(group => 
       Object.keys(IoTDevice.eventData[group]).forEach(spot => 
-        IoTDevice.eventData[group][spot]['status'] = IoTDevice.generateRandomOccupancy(-1, 2)
+          IoTDevice.eventData[group][spot]['status'] = IoTDevice.generateRandomOccupancy(-1, 2)
       )
     );
 
-    IoTDevice.eventData.Group_H.spot_62.status = -1
-    IoTDevice.eventData.Group_H.spot_61.status = -1
-    IoTDevice.eventData.Group_H.spot_60.status = -1
-    IoTDevice.eventData.Group_H.spot_59.status = -1
-    IoTDevice.eventData.Group_H.spot_58.status = -1
 
     if(process.env.HOST_ENV == 'EDGE') {
-      const board = new five.Board({
-        io: new piIO()
-      });
-
-      board.on('ready', () => {
-        const proximity = new five.Proximity({
-          controller: piIO.HCSR04,
-          triggerPin: 'P1-12',
-          echoPin: 'P1-18'
-        });
-      
-      
-        proximity.on("change", function() {
-          IoTDevice.eventData.Group_H.spot_62.status = this.cm;
-        });
-      
-      });
-
-      // IoTDevice.eventData.Group_H.spot_62.status = 0
-      // IoTDevice.eventData.Group_H.spot_61.status = 0
-      // IoTDevice.eventData.Group_H.spot_60.status = 0
-      // IoTDevice.eventData.Group_H.spot_59.status = 0
-      // IoTDevice.eventData.Group_H.spot_58.status = 0
+      IoTDevice.eventData.Group_H.spot_62.status = -1
+      IoTDevice.eventData.Group_H.spot_61.status = -1
+      IoTDevice.eventData.Group_H.spot_60.status = -1
+      IoTDevice.eventData.Group_H.spot_59.status = -1
+      IoTDevice.eventData.Group_H.spot_58.status = -1
     }
 
   }
