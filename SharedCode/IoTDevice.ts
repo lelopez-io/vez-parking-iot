@@ -2532,16 +2532,6 @@ export class IoTDevice {
           IoTDevice.eventData[group][spot]['status'] = IoTDevice.generateRandomOccupancy(-1, 2)
       )
     );
-
-
-    if(process.env.HOST_ENV == 'EDGE') {
-      IoTDevice.eventData.Group_H.spot_62.status = -1
-      IoTDevice.eventData.Group_H.spot_61.status = -1
-      IoTDevice.eventData.Group_H.spot_60.status = -1
-      IoTDevice.eventData.Group_H.spot_59.status = -1
-      IoTDevice.eventData.Group_H.spot_58.status = -1
-    }
-
   }
 
   SetSensorData(sensorData) {
@@ -2552,5 +2542,4 @@ export class IoTDevice {
     IoTDevice.eventData.Group_H.spot_59.status = sensorData.Group_H.spot_59.status
     IoTDevice.eventData.Group_H.spot_58.status = sensorData.Group_H.spot_58.status
   }
-
 }
