@@ -2551,8 +2551,8 @@ export class IoTDevice {
       board.on('ready', () => {
         const proximity = new five.Proximity({
           controller: piIO.HCSR04,
-          triggerPin: 'GPIO18',
-          echoPin: 'GPIO24'
+          triggerPin: 'P1-12',
+          echoPin: 'P1-18'
         });
       
       

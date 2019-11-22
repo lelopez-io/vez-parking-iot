@@ -7,10 +7,6 @@ const MICROSECDONDS_PER_CM = 1e6/34321;
 const trigger = new Gpio(18, {mode: Gpio.OUTPUT});
 const echo = new Gpio(24, {mode: Gpio.INPUT, alert: true});
 
-const ledR = new Gpio(17, {mode: Gpio.OUTPUT});
-const ledG = new Gpio(22, {mode: Gpio.OUTPUT});
-const ledY = new Gpio(27, {mode: Gpio.OUTPUT});
-
 let dutyCycle1 = 0;
 let dutyCycle2 = 0;
 let dutyCycle3 = 0;
