@@ -41,8 +41,8 @@ if(process.env.HOST_ENV == 'EDGE') {
   board.on('ready', () => {
     const sensor1 = new five.Proximity({
       controller: piIO.HCSR04,
-      triggerPin: 'P1-12',
-      echoPin: 'P1-18'
+      triggerPin: 'P1-10',
+      echoPin: 'P1-12'
     });
   
   
