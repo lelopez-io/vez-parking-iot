@@ -39,11 +39,6 @@ if(process.env.HOST_ENV == 'EDGE') {
   });
   
   board.on('ready', () => {
-    const sensor1 = new five.Proximity({
-      controller: piIO.HCSR04,
-      triggerPin: 'P1-8',
-      echoPin: 'P1-10'
-    });
     const sensor2 = new five.Proximity({
       controller: piIO.HCSR04,
       triggerPin: 'P1-16',
@@ -61,14 +56,7 @@ if(process.env.HOST_ENV == 'EDGE') {
     });
   
   
-    sensor1.on("data", function() {
-      sensorData.Group_H.spot_62.cm_val = this.cm
-      if(this.cm > 70 || this.cm == 0) {
-        sensorData.Group_H.spot_62.status = SPOT_FREE
-      } else {
-        sensorData.Group_H.spot_62.status = SPOT_OCCUPIED
-      }
-    });
+
     sensor2.on("data", function() {
       sensorData.Group_H.spot_61.cm_val = this.cm
       if(this.cm > 70 || this.cm == 0) {
