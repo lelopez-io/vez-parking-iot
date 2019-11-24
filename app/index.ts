@@ -35,6 +35,7 @@ if(process.env.HOST_ENV == 'EDGE') {
   const five = require('johnny-five');
   const piIO = require('pi-io');
   const board = new five.Board({
+    repl: false,
     io: new piIO()
   });
   
