@@ -94,5 +94,5 @@ iotDevice.Run();
 setInterval(() => {
   iotDevice.SetEventData();
   iotDevice.SetSensorData(sensorData)
-}, 2000);
+}, 1996);
 

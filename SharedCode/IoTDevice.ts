@@ -2490,7 +2490,7 @@ export class IoTDevice {
         console.log('\n\nSending device event data:\n\n');
         //+ JSON.stringify(IoTDevice.eventData)
         IoTDevice.client.sendEvent(new Message(JSON.stringify(IoTDevice.eventData)), IoTDevice.printErrorFor('send event'));
-      }, 10000);
+      }, 2009);
 
       // Incase there is a client error this will report at what interval it happened.
       IoTDevice.client.on('error', (err) => {
