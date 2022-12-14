@@ -16,7 +16,7 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "jshint": "^2.9.6"
+    "jshint": "^2.13.6"
   },
   "scripts": {
     "lint": "jshint --show-non-errors .",
